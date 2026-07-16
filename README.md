@@ -1,12 +1,12 @@
-# 沪深300多因子选股策略（ML升级版）
+# 沪深300多因子选股策略
 
 基于 **LightGBM + Ridge + K-means 聚类** 的沪深300多因子选股策略，带 Walk-Forward 验证和向量化回测。
 
-> 🎯 核心问题：非线性模型（LightGBM）能否在真实交易成本下跑赢线性模型（Ridge）？
+> 核心问题：非线性模型（LightGBM）能否在真实交易成本下跑赢线性模型（Ridge）？
 
 ## 数据说明
 
-- **标的**：沪深300成分股（💰 174只，过滤28只数据不足的股票后）
+- **标的**：沪深300成分股（174只，过滤28只数据不足的股票后）
 - **时间**：2018-01-01 至 2022-12-31（1215个交易日）
 - **来源**：baostock 开源数据
 - **因子**：
@@ -50,7 +50,7 @@
 
 ## 回测结果（2018-2022）
 
-| 指标 | LightGBM（RF替代） | Ridge |
+| 指标 | LightGBM | Ridge |
 |------|:-------:|:-----:|
 | 年化收益 | **21.26%** | 20.74% |
 | 夏普比率 | **0.84** | 0.74 |
@@ -103,14 +103,10 @@ python main.py
 - **更新数据**：`python fetch_data.py`（需联网）
 - **Jupyter Notebook**：`notebooks/` 目录下有 4 个分析笔记本
 
-## 简历一句话总结 💼
-
-> 基于 LightGBM + K-means 聚类的沪深300多因子选股策略，通过 Walk-Forward 滚动验证和0.1%交易成本向量化回测，在2018-2022五年间实现年化收益21.26%、夏普比率0.84，回撤控制显著优于 Ridge 线性基线（-24.49% vs -31.46%）。
-
 ## 依赖
 
 - Python 3.8+
 - numpy, pandas, scikit-learn, matplotlib, seaborn
-- LightGBM（⚠️ macOS 需 `brew install libomp`，不可用时自动回退到 RandomForest）
-- baostock（数据获取）
-- jupyter（可选，用于 Notebook 分析）
+- LightGBM
+- baostock
+- jupyter
